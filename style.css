@@ -20,12 +20,14 @@ button{
     grid-template-columns: repeat(var(--grid-rows), 1fr);
     background-color: #fff;
     border-color: black;
+    /* user-select: text; */
 }
 
 .grid-item {
     padding: 1em;
     border: 1px solid #ddd;
     text-align: center;
+    /* user-select: none; */
 }
 
 /* color scheeming */
@@ -44,6 +46,6 @@ button{
     align-items:center;
     text-decoration: bold;
 }
-.grid-item:hover {
+/* .grid-item:hover {
     background-color: #002b36;
-}
+} */
