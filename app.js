@@ -38,10 +38,9 @@ function makeRows(size) {
     };
 };
 
-
+// Takes values from the slider to create new grid
 const slider = document.getElementById("slider");
 currentSize = slider.value;
-
 slider.oninput = (e) => {
     currentSize = slider.value;
     makeRows(currentSize);
