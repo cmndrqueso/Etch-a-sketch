@@ -1,41 +1,31 @@
+// Defines default values
 const container = document.getElementById("grid-container");
 const DEFAULT_COLOR = '#333333';
 const DEFAULT_GRID = 16;
 
+// Sets defaults
 let currentColor = DEFAULT_COLOR;
 let currentSize = DEFAULT_GRID;
 
+//Creates the grid
 makeRows(currentSize);
 
-
-
-
-
+// Clears The grid
 const btn = document.getElementById("clear");
 btn.addEventListener('click', clear);
-
-// Functions for changing grid size
-// const xInput = document.getElementById("x");
-// x.addEventListener("xInput",updateX);
-// const yInput = document.getElementById("y");
-// y.addEventListener("yInput",updateY);
-// function updateX(e) {
-//     x = e.target.value;
-// }
-// function updateY(e) {
-//     y = e.target.value;
-// }
 
 // Will add an mouse click event listener
 let mouseDown = false;
 document.body.onmousedown = () => (mouseDown = true);
 document.body.onmouseup = () => (mouseDown = false);
 
+// Paints with selected color
 function color(e){
     if (e.type === 'mouseover' && !mouseDown)return
     e.target.style.backgroundColor = currentColor;
 }
 
+// Creates grid using arguments as size (argument^2)
 function makeRows(size) {
     container.style.setProperty('--grid-rows', size);
     container.style.setProperty('--grid-cols', size);
@@ -47,6 +37,7 @@ function makeRows(size) {
         container.appendChild(cell).className = "grid-item";
     };
 };
+
 
 const slider = document.getElementById("slider");
 currentSize = slider.value;
@@ -67,5 +58,3 @@ function clear(){
     container.innerHTML = '';
     makeRows(currentSize);
 }
-
-// colorSelection(color);
