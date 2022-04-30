@@ -1,13 +1,12 @@
+const container = document.getElementById("grid-container");
 const DEFAULT_COLOR = '#333333';
 const DEFAULT_GRID = 16;
 
 let currentColor = DEFAULT_COLOR;
 let currentSize = DEFAULT_GRID;
 
-const container = document.getElementById("grid-container");
+makeRows(currentSize);
 
-const slider = document.getElementById("slider");
-currentSize = slider.value;
 
 
 
@@ -31,17 +30,16 @@ btn.addEventListener('click', clear);
 let mouseDown = false;
 document.body.onmousedown = () => (mouseDown = true);
 document.body.onmouseup = () => (mouseDown = false);
-2
+
 function color(e){
     if (e.type === 'mouseover' && !mouseDown)return
     e.target.style.backgroundColor = currentColor;
 }
 
-
-function makeRows(rows, cols) {
-    container.style.setProperty('--grid-rows', rows);
-    container.style.setProperty('--grid-cols', cols);
-    for (let i = 0; i < (rows * cols); i++) {
+function makeRows(size) {
+    container.style.setProperty('--grid-rows', size);
+    container.style.setProperty('--grid-cols', size);
+    for (let i = 0; i < (size * size); i++) {
         let cell = document.createElement("div");
         // cell.innerText = (i + 1);
         cell.addEventListener('mouseover', color);
@@ -50,29 +48,24 @@ function makeRows(rows, cols) {
     };
 };
 
+const slider = document.getElementById("slider");
+currentSize = slider.value;
+
+slider.oninput = (e) => {
+    currentSize = slider.value;
+    makeRows(currentSize);
+    clear();
+}
+
 // function colorSelection(color){
 //     // will need to take in color values 
 //     // assign color to event of drawing 
 // }
 
-
-const x = currentSize;
-const y = currentSize;
-makeRows(x,y);
-
-slider.oninput = (e) => {
-    currentSize = this.value;
-    clear();
-    makeRows(x,y);
-}
-
-
 // Clears the grid
 function clear(){
     container.innerHTML = '';
-    makeRows(x,y);
+    makeRows(currentSize);
 }
-// const divs = document.getElementsByClassName('grid-item');
-// const color = "#002b36";
 
 // colorSelection(color);

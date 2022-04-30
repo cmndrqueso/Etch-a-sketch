@@ -12,10 +12,9 @@ button{
     margin: 20px;
 }
 #grid-container {
-    width: 660px;
-    height: 660px;
+    /* width: 660px;
+    height: 660px; */
     display: grid;
-    /* grid-gap: 1em; */
     grid-template-rows: repeat(var(--grid-rows), 1fr);
     grid-template-columns: repeat(var(--grid-rows), 1fr);
     background-color: #fff;
@@ -30,7 +29,7 @@ button{
     /* user-select: none; */
 }
 
-/* color scheeming */
+/* color scheming */
 .headings{
     color:#839496;
     
@@ -43,6 +42,7 @@ button{
     margin-bottom: 15px;
     display:flex;
     flex-direction: column;
+    flex-wrap: wrap;
     align-items:center;
     text-decoration: bold;
 }
