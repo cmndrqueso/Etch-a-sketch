@@ -22,8 +22,6 @@ document.body.onmouseup = () => (mouseDown = false);
 // Paints with selected color
 function color(e){
     const colorPicker = document.getElementById("color");
-    const highlight = document.getElementsByClassName("grid-item :hover");
-    
     currentColor = colorPicker.value;
     colorPicker.oninput = (e) => {
         currentColor = color.value;
@@ -54,6 +52,13 @@ slider.oninput = (e) => {
     makeRows(currentSize);
     clear();
 }
+// const highlight = document.getElementById("grid-item");
+// highlight.addEventListener("mouseenter", e => {
+//     highlight.style.backgroundColor = currentColor;
+// });
+// highlight.addEventListener("mouseleave",e => {
+//     highlight.style.backgroundColor = "";
+// });
 
 
 
