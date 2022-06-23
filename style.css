@@ -23,6 +23,14 @@ button{
     /* user-select: text; */
 }
 
+label {
+    color: #fff;
+}
+
+/* .label{
+    color:#fff;
+} */
+
 .grid-item {
     padding: 1em;
     border: 1px solid #ddd;
