@@ -20,11 +20,6 @@ btn.addEventListener("click", clear);
 let mouseDown = false;
 document.body.onmousedown = () => (mouseDown = true);
 document.body.onmouseup = () => (mouseDown = false);
-
-
-
-
-
 const slider = document.getElementById("slider");
 currentSize = slider.value;
 slider.oninput = (e) => {
@@ -57,12 +52,6 @@ function makeRows(size) {
     };
 };
 
-// function highlight(e){
-//     let cell = document.getElementById('div');
-//     currentCellColor = cell.getPropertyValue("background-color");
-//     console.log(currentCellColor);
-// };
-// Clears the grid
 function clear(){
     container.innerHTML = '';
     makeRows(currentSize);
