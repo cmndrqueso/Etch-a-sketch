@@ -12,7 +12,7 @@ let currentCellColor = "";
 //Creates the grid
 makeRows(currentSize);
 
-// Clears The grid
+// Button that clears The grid
 const btn = document.getElementById("clear");
 btn.addEventListener("click", clear);
 
@@ -21,6 +21,18 @@ let mouseDown = false;
 document.body.onmousedown = () => (mouseDown = true);
 document.body.onmouseup = () => (mouseDown = false);
 
+
+
+
+
+const slider = document.getElementById("slider");
+currentSize = slider.value;
+slider.oninput = (e) => {
+    currentSize = slider.value;
+    makeRows(currentSize);
+    clear();
+};
+
 // Paints with selected color
 function color(e){
     const colorPicker = document.getElementById("color");
@@ -28,14 +40,8 @@ function color(e){
     colorPicker.oninput = (e) => {
         currentColor = color.value;
     }
-
     if (e.type === 'mouseover' && !mouseDown)return
     e.target.style.backgroundColor = currentColor;
-};
-
-function highlight(e){
-    currentCellColor = e.getPropertyValue("background-color");
-    console.log(currentCellColor);
 };
 
 // Creates grid using arguments as size (argument^2)
@@ -46,31 +52,18 @@ function makeRows(size) {
         let cell = document.createElement("div");
         cell.addEventListener("mouseover", color);
         cell.addEventListener("mousedown", color);
+        // cell.addEventListener("mouseenter",highlight);
         container.appendChild(cell).className = "grid-item";
     };
 };
 
-// const highlight = document.getElementById("grid-item");
-// highlight.addEventListener("mouseenter", e => {
-//     highlight.style.backgroundColor = currentColor;
-// });
-// highlight.addEventListener("mouseleave",e => {
-//     highlight.style.backgroundColor = "";
-// });
-// Takes values from the slider to create new grid
-const slider = document.getElementById("slider");
-currentSize = slider.value;
-slider.oninput = (e) => {
-    currentSize = slider.value;
-    makeRows(currentSize);
-    clear();
-
-}
-
-
-
+// function highlight(e){
+//     let cell = document.getElementById('div');
+//     currentCellColor = cell.getPropertyValue("background-color");
+//     console.log(currentCellColor);
+// };
 // Clears the grid
 function clear(){
     container.innerHTML = '';
     makeRows(currentSize);
-}
+};
